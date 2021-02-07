@@ -1,0 +1,63 @@
+{
+    "included": [
+        {
+            "title": "1060",
+            "price": 1200
+        },
+        {
+            "title": "1660ti",
+            "price": 2200
+        },
+        {
+            "title": "1660",
+            "price": 2000
+        },
+        {
+            "title": "1070",
+            "price": 2000
+        },
+        {
+            "title": "1070ti",
+            "price": 2400
+        },
+        {
+            "title": "1080",
+            "price": 3000
+        },
+        {
+            "title": "1080ti",
+            "price": 3600
+        },
+        {
+            "title": "470",
+            "price": 2000
+        },
+        {
+            "title": "480",
+            "price": 2200
+        },
+        {
+            "title": "570",
+            "price": 2200
+        },
+        {
+            "title": "580",
+            "price": 2200
+        },
+        {
+            "title": "590",
+            "price": 2200
+        }
+    ],
+    "excluded": [
+        "gamingdator",
+        "speldator",
+        "spel",
+        "gaming",
+        "dator",
+        "setup",
+        "tv",
+        "sony",
+        "lcd"
+    ]
+}
