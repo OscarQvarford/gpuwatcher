@@ -95,6 +95,8 @@ const initScraper = () => {
 	console.log('initializing scraper...');
 	const scraper = new Scraper(keywords.included, keywords.excluded);
 	scraper.getListings.then(listings => {
+		const date = new Date();
+
 		if (listings.length) {
 			for (let i = 0; i < listings.length; i++) {
 				const mailOptions = {
@@ -116,14 +118,14 @@ const initScraper = () => {
 						console.log(info.response);
 
 						if (i === listings.length - 1) {
-							console.log('Email sent...');
+							console.log(`${date.getHours()}:${date.getMinutes()} Email sent...`);
 							initScraper();
 						}
 					}
 				});
 			}
 		} else {
-			console.log('No new listings found...');
+			console.log(`${date.getHours()}:${date.getMinutes()} No new listings found...`);
 			initScraper();
 		}
 	}).catch(err => console.log(err));

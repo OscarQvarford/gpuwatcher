@@ -1,7 +1,6 @@
 {
-  "name": "blocket",
+  "name": "gpuwatcher",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,5 +10,15 @@
   "dependencies": {
     "nodemailer": "^6.4.17",
     "puppeteer": "^6.0.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OscarQvarford/gpuwatcher.git"
+  },
+  "bugs": {
+    "url": "https://github.com/OscarQvarford/gpuwatcher/issues"
+  },
+  "homepage": "https://github.com/OscarQvarford/gpuwatcher#readme",
+  "description": ""
 }
