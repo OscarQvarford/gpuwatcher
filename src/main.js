@@ -39,6 +39,8 @@ class Scraper {
 				const included = this.included;
 				const excluded = this.excluded;
 
+				console.log('Searching...')
+
 				const listings = await page.evaluate(({lastProcessedListing, included, excluded}) => {
 					const collection = [];
 					const titleNodes = document.getElementsByClassName('styled__StyledTitleLink-sc-1kpvi4z-10');
@@ -83,6 +85,15 @@ class Scraper {
 	});
 }
 
+const getTime = () => {
+	const date = new Date();
+
+	return `${date.getHours()}:${(date.getMinutes().toString().length === 1) ?
+		`${date.getMinutes()}0` :
+		date.getMinutes()
+	}`;
+}
+
 const transporter = nodemailer.createTransport({
 	service: 'gmail',
 	auth: {
@@ -92,11 +103,12 @@ const transporter = nodemailer.createTransport({
 })
 
 const initScraper = () => {
-	console.log('initializing scraper...');
+	console.log('\n');
+	console.log(('*').repeat(30));
+	console.log('\n');
+	console.log('Initializing scraper...');
 	const scraper = new Scraper(keywords.included, keywords.excluded);
 	scraper.getListings.then(listings => {
-		const date = new Date();
-
 		if (listings.length) {
 			for (let i = 0; i < listings.length; i++) {
 				const mailOptions = {
@@ -118,14 +130,14 @@ const initScraper = () => {
 						console.log(info.response);
 
 						if (i === listings.length - 1) {
-							console.log(`${date.getHours()}:${date.getMinutes()} Email sent...`);
+							console.log(`${getTime()} Email sent...`);
 							initScraper();
 						}
 					}
 				});
 			}
 		} else {
-			console.log(`${date.getHours()}:${date.getMinutes()} No new listings found...`);
+			console.log(`${getTime()} No new listings found...`);
 			initScraper();
 		}
 	}).catch(err => console.log(err));
