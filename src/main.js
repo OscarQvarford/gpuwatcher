@@ -89,7 +89,7 @@ const getTime = () => {
 	const date = new Date();
 
 	return `${date.getHours()}:${(date.getMinutes().toString().length === 1) ?
-		`${date.getMinutes()}0` :
+		`0${date.getMinutes()}` :
 		date.getMinutes()
 	}`;
 }
