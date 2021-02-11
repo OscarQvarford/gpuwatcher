@@ -32,7 +32,8 @@ class Scraper {
 		});
 
 		const page = await browser.newPage();
-		await page.goto(`https://www.blocket.se/annonser/hela_sverige/${categories[0]}?cg=5000`, {waitUntil: 'networkidle2'});
+		await page.goto(`https://www.blocket.se/annonser/hela_sverige/${categories[0]}?cg=5000`, {waitUntil: 'networkidle2'})
+			.catch(err => reject(err));
 		
 		this.getLastProcessedListing
 			.then(async lastProcessedListing => {
@@ -140,7 +141,10 @@ const initScraper = () => {
 			console.log(`${getTime()} No new listings found...`);
 			initScraper();
 		}
-	}).catch(err => console.log(err));
+	}).catch(err => {
+		console.log(err);
+		initScraper();
+	});
 }
 
 initScraper();
